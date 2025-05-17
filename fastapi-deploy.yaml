@@ -36,7 +36,7 @@ spec:
         - containerPort: 8000
         env:
         - name: PREFIX_URL
-          value: "/dev"
+          value: "/test"
         resources:
           requests:
             cpu: "100m"
