@@ -1,0 +1,4 @@
+resources:
+- fastapi-deploy.yaml
+- fastapi-ingress.yaml
+- fastapi-namespace.yaml
