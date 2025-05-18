@@ -1,3 +1,4 @@
 resources:
+- arfocd-application.yaml
 - argocd-configmap.yaml
 - argocd-ingress.yaml

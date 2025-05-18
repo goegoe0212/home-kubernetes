@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-dev
+  namespace: argocd
+  annotations:
+    argocd-image-updater.argoproj.io/image-list: fastapi-image=docker.io/goegoe0212/fastapi-kubernetes
+    argocd-image-updater.argoproj.io/fastapi-image.update-strategy: semver
+    argocd-image-updater.argoproj.io/write-back-method: git
+    argocd-image-updater.argoproj.io/fastapi-image.kustomize.image-name: docker.io/goegoe0212/fastapi-kubernetes
+    argocd-image-updater.argoproj.io/git-commit-message: "chore: update {{image_name}} to {{new_tag}}"
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app-dev
+  source:
+    repoURL: git@github.com:goegoe0212/kubernetes-api-argocd.git
+    path: overlays/development
+    targetRevision: HEAD
+    kustomize:
+      {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
