@@ -18,8 +18,7 @@ spec:
     repoURL: git@github.com:goegoe0212/kubernetes-api-argocd.git
     path: overlays/development
     targetRevision: HEAD
-    kustomize:
-      {}
+    kustomize: {}
   syncPolicy:
     automated:
       prune: true
