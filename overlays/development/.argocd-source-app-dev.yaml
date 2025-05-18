@@ -1,3 +1,0 @@
-kustomize:
-  images:
-  - docker.io/goegoe0212/fastapi-kubernetes=docker.io/goegoe0212/fastapi-kubernetes:0.1.2
