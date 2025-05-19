@@ -3,12 +3,6 @@ kind: Application
 metadata:
   name: app-dev
   namespace: argocd
-  # annotations:
-  #   argocd-image-updater.argoproj.io/write-back-method: git
-  #   argocd-image-updater.argoproj.io/git-branch: main
-  #   argocd-image-updater.argoproj.io/write-back-target: kustomization
-  #   argocd-image-updater.argoproj.io/image-list: fastapi-image=docker.io/goegoe0212/fastapi-kubernetes
-  #   argocd-image-updater.argoproj.io/fastapi-image.update-strategy: semver
 spec:
   project: default
   destination:
