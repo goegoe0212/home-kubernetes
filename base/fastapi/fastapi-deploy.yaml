@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
       - name: fastapi-container
-        image: docker.io/goegoe0212/fastapi-kubernetes:0.1.0
+        image: docker.io/goegoe0212/fastapi-kubernetes
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
