@@ -1,6 +1,4 @@
 resources:
-- ../../base/argocd-install
-- ../../base/argocd
 - ../../base/fastapi
 images:
 - name: docker.io/goegoe0212/fastapi-kubernetes

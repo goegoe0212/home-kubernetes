@@ -1,5 +1,0 @@
-resources:
-- argocd-namespace.yaml
-- argocd-application.yaml
-- argocd-configmap.yaml
-- argocd-ingress.yaml
