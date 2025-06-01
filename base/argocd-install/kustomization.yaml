@@ -5,6 +5,8 @@ resources:
   - argocd-namespace.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   - argocd-ingress.yaml
+  - argocd-repository-config.yaml
+  - argocd-application.yaml
 
 patches:
   - target:
