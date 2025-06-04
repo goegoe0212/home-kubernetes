@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-dev
+  name: api-dev
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: app-dev
+    namespace: api-dev
   source:
     repoURL: https://github.com/goegoe0212/kubernetes-api-argocd.git
-    path: overlays/development
+    path: overlays/development/api
     targetRevision: HEAD
     kustomize: {}
   syncPolicy:
