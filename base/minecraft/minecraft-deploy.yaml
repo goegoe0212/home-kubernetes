@@ -24,7 +24,7 @@ spec:
   accessModes:
     - ReadWriteMany
   nfs:
-    server: 192.168.1.10
+    server: 192.168.20.20
     path: /home/cloudinit/data/minecraft
   persistentVolumeReclaimPolicy: Retain
 ---
