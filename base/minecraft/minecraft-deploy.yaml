@@ -14,6 +14,32 @@ spec:
   selector:
     app: minecraft-server
 ---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: minecraft-nfs-pv
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.1.10
+    path: /home/cloudinit/data/minecraft
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: minecraft-nfs-pvc
+  namespace: minecraft-dev
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -61,5 +87,12 @@ spec:
               cpu: "4"
           tty: true
           stdin: true
+          volumeMounts:
+            - name: minecraft-data
+              mountPath: /data
       restartPolicy: Always
+      volumes:
+        - name: minecraft-data
+          persistentVolumeClaim:
+            claimName: minecraft-nfs-pvc
 ---
