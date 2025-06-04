@@ -15,20 +15,6 @@ spec:
     app: minecraft-server
 ---
 apiVersion: v1
-kind: Service
-metadata:
-  name: minecraft-server-rcon
-  namespace: minecraft-dev
-spec:
-  type: ClusterIP
-  ports:
-    - port: 25575
-      targetPort: 25575
-      protocol: TCP
-  selector:
-    app: minecraft-server
----
-apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: minecraft-nfs-pv
