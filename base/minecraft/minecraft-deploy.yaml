@@ -94,12 +94,6 @@ spec:
               value: "Welcome! minecraft server!!"
             - name: DIFFICULTY
               value: "hard"
-            - name: ENABLE_RCON
-              value: "true"
-            - name: RCON_PASSWORD
-              value: "your-strong-password"
-            - name: RCON_PORT
-              value: "25575"
           resources:
             requests:
               memory: "1Gi"
