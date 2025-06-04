@@ -1,0 +1,19 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  namespace: minecraft-dev
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /rcon
+        pathType: Prefix
+        backend:
+          service:
+            name: rcon-web-admin
+            port:
+              number: 4326
+---

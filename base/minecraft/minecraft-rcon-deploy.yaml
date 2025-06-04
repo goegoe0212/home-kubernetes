@@ -1,0 +1,54 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rcon-web-admin
+  namespace: minecraft-dev
+spec:
+  selector:
+    app: rcon-web-admin
+  ports:
+    - port: 4326
+      targetPort: 4326
+      protocol: TCP
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rcon-web-admin
+  namespace: minecraft-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rcon-web-admin
+  template:
+    metadata:
+      labels:
+        app: rcon-web-admin
+    spec:
+      containers:
+        - name: rcon-web-admin
+          image: itzg/rcon
+          env:
+            - name: RWA_USERNAME
+              value: "admin"
+            - name: RWA_PASSWORD
+              value: "your-webadmin-password"
+            - name: RWA_RCON_HOST
+              value: "minecraft-server"
+            - name: RWA_RCON_PORT
+              value: "25575"
+            - name: RWA_RCON_PASSWORD
+              value: "your-strong-password"
+          ports:
+            - containerPort: 4326
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "500m"
+              memory: "256Mi"
+---
