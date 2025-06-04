@@ -4,12 +4,14 @@ kind: Ingress
 metadata:
   name: api-ingress
   namespace: minecraft-dev
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   ingressClassName: nginx
   rules:
   - http:
       paths:
-      - path: /rcon
+      - path: /rcon(/|$)(.*)
         pathType: Prefix
         backend:
           service:
