@@ -5,4 +5,3 @@ resources:
 - minecraft-namespace.yaml
 - minecraft-deploy.yaml
 - minecraft-rcon-deploy.yaml
-- minecraft-ingress.yaml

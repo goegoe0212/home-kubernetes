@@ -11,7 +11,8 @@ spec:
     - port: 4326
       targetPort: 4326
       protocol: TCP
-  type: ClusterIP
+      nodePort: 32000
+  type: NodePort
 ---
 apiVersion: apps/v1
 kind: Deployment
