@@ -41,7 +41,7 @@ spec:
             - name: TYPE
               value: "PAPER"
             - name: VERSION
-              value: "1.21.1"
+              value: "1.21.4"
             - name: TZ
               value: "Asia/Tokyo"
             - name: MEMORY
@@ -54,10 +54,10 @@ spec:
               value: "hard"
           resources:
             requests:
-              memory: "8Gi"
+              memory: "1Gi"
               cpu: "1"
             limits:
-              memory: "12Gi"
+              memory: "8Gi"
               cpu: "4"
           tty: true
           stdin: true
