@@ -1,0 +1,63 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minecraft-server
+spec:
+  type: NodePort
+  ports:
+    - port: 25565
+      targetPort: 25565
+      nodePort: 30000
+      protocol: TCP
+  selector:
+    app: minecraft-server
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minecraft-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minecraft-server
+  template:
+    metadata:
+      labels:
+        app: minecraft-server
+    spec:
+      containers:
+        - name: minecraft-server
+          image: itzg/minecraft-server
+          ports:
+            - containerPort: 25565
+              protocol: TCP
+          env:
+            - name: EULA
+              value: "TRUE"
+            - name: TYPE
+              value: "PAPER"
+            - name: VERSION
+              value: "1.21.1"
+            - name: TZ
+              value: "Asia/Tokyo"
+            - name: MEMORY
+              value: "8G"
+            - name: SERVER_NAME
+              value: "minecraft server"
+            - name: MOTD
+              value: "Welcome! minecraft server!!"
+            - name: DIFFICULTY
+              value: "hard"
+          resources:
+            requests:
+              memory: "8Gi"
+              cpu: "1"
+            limits:
+              memory: "12Gi"
+              cpu: "4"
+          tty: true
+          stdin: true
+      restartPolicy: Always
+---

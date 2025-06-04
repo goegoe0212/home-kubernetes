@@ -3,6 +3,8 @@ kind: Kustomization
 
 resources:
 - ../../base/fastapi
+- ../../base/minecraft
+
 images:
 - name: docker.io/goegoe0212/fastapi-kubernetes
   newTag: 0.1.2
