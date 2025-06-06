@@ -5,7 +5,7 @@ metadata:
   name: api-ingress
   namespace: api-dev
 spec:
-  ingressClassName: nginx
+  ingressClassName: apisix
   rules:
   - http:
       paths:
