@@ -13,6 +13,32 @@ spec:
     targetPort: 8000
   type: ClusterIP
 ---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fastapi-nfs-pv
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.20.20
+    path: /home/cloudinit/data/youtube
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fastapi-nfs-pvc
+  namespace: api-dev
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -44,4 +70,12 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
+          volumeMounts:
+            - name: fastapi-data
+              mountPath: /data
+      restartPolicy: Always
+      volumes:
+        - name: fastapi-data
+          persistentVolumeClaim:
+            claimName: fastapi-nfs-pvc
 ---
