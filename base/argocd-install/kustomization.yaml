@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
   - argocd-namespace.yaml
   - https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-  - argocd-ingress.yaml
   - argocd-repository-config.yaml
 
 patches:
@@ -60,5 +59,21 @@ patches:
       - op: replace
         path: /spec/replicas
         value: 2
+  - target:
+      kind: Service
+      name: argocd-server
+    patch: |-
+      - op: replace
+        path: /spec/type
+        value: NodePort
+      - op: replace
+        path: /spec/ports
+        value:
+          - name: port-1 # argocd-nodeport.yaml で定義されていたポート名
+            port: 8080
+            protocol: TCP
+            targetPort: 8080
+            nodePort: 30000
+
 
 namespace: argocd
