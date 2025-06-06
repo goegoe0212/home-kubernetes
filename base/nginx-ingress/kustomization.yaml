@@ -5,3 +5,12 @@ resources:
 - https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.12.3/deploy/static/provider/cloud/deploy.yaml
 - ingress-rbac.yaml
 
+patches:
+  - target:
+      kind: Service
+      name: ingress-nginx-controller
+      namespace: ingress-nginx
+    patch: |-
+      - op: add
+        path: /spec/loadBalancerIP
+        value: 192.168.20.110
