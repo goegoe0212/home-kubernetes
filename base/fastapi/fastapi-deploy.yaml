@@ -45,7 +45,7 @@ metadata:
   name: fastapi-deployment
   namespace: api-dev
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: fastapi-app
