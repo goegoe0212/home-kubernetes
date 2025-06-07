@@ -5,7 +5,7 @@ metadata:
   name: home-temp-collector-cronjob
   namespace: home-app
 spec:
-  schedule: "0 * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       template:
