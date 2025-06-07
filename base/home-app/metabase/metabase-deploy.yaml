@@ -36,6 +36,8 @@ spec:
             - containerPort: 3000
               protocol: TCP
           env:
+            - name: TZ
+              value: "Asia/Tokyo"
             - name: JAVA_OPTS
               value: "-Xmx2g"
             - name: MB_DB_TYPE

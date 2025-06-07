@@ -64,6 +64,8 @@ spec:
             - containerPort: 5432
               protocol: TCP
           env:
+            - name: TZ
+              value: "Asia/Tokyo"
             - name: POSTGRES_USER
               value: "admin"
             - name: POSTGRES_PASSWORD
