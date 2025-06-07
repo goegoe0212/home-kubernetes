@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: database-dev
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: database-dev
+  source:
+    repoURL: https://github.com/goegoe0212/kubernetes-api-argocd.git
+    path: overlays/development/database
+    targetRevision: HEAD
+    kustomize: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
