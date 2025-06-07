@@ -2,5 +2,5 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: database-dev
+  name: home-app
 ---

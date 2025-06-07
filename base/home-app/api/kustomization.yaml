@@ -2,7 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- fastapi-namespace.yaml
 - redis-deploy.yaml
-- fastapi-deploy.yaml
-- fastapi-ingress.yaml
+- api-deploy.yaml
+- api-ingress.yaml
