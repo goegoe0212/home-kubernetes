@@ -74,12 +74,12 @@ spec:
           limits:
             cpu: "500m"
             memory: "256Mi"
-      #     volumeMounts:
-      #       - name: fastapi-data
-      #         mountPath: /data
-      # restartPolicy: Always
-      # volumes:
-      #   - name: fastapi-data
-      #     persistentVolumeClaim:
-      #       claimName: fastapi-nfs-pvc
+          volumeMounts:
+            - name: fastapi-data
+              mountPath: /data
+      restartPolicy: Always
+      volumes:
+        - name: fastapi-data
+          persistentVolumeClaim:
+            claimName: fastapi-nfs-pvc
 ---
