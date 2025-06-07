@@ -1,0 +1,33 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: home-temp-collector-cronjob
+  namespace: home-app
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: home-temp-collector-app
+            image: goegoe0212/home-temp-collector
+            env:
+            - name: POSTGRESQL_HOST
+              value: postgres-service
+            - name: POSTGRESQL_PORT
+              value: "5432"
+            - name: POSTGRESQL_USER
+              value: "admin"
+            - name: POSTGRESQL_PASSWORD
+              value: "Passw0rd"
+            - name: POSTGRESQL_DBNAME
+              value: "postgresdb"
+            - name: NATURE_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: home-temp-collector-secret
+                  key: NATURE_API_KEY
+          restartPolicy: OnFailure
+---
