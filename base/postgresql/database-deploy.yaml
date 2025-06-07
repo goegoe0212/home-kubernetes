@@ -25,7 +25,7 @@ spec:
     - ReadWriteMany
   nfs:
     server: 192.168.20.20
-    path: /home/cloudinit/data/postgres
+    path: /home/cloudinit/data/postgresql
   persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
