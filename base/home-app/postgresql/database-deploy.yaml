@@ -28,25 +28,13 @@ spec:
     path: /home/cloudinit/data/postgresql
   persistentVolumeReclaimPolicy: Retain
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: postgres-nfs-pvc
-  namespace: home-app
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 20Gi
-  storageClassName: ""
----
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: postgres-app
   namespace: home-app
 spec:
+  serviceName: "postgres-service"
   replicas: 1
   selector:
     matchLabels:
@@ -58,11 +46,9 @@ spec:
     spec:
       containers:
         - name: postgres-app
-          image: postgres:latest
-          imagePullPolicy: IfNotPresent
+          image: timescale/timescaledb:latest-pg17
           ports:
             - containerPort: 5432
-              protocol: TCP
           env:
             - name: TZ
               value: "Asia/Tokyo"
@@ -72,19 +58,17 @@ spec:
               value: "Passw0rd"
             - name: POSTGRES_DB
               value: "postgresdb"
-          resources:
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
-            limits:
-              cpu: "500m"
-              memory: "256Mi"
           volumeMounts:
             - name: postgres-data
               mountPath: /var/lib/postgresql/data
       restartPolicy: Always
-      volumes:
-        - name: postgres-data
-          persistentVolumeClaim:
-            claimName: postgres-nfs-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-data
+      spec:
+        accessModes: [ "ReadWriteMany" ]
+        resources:
+          requests:
+            storage: 20Gi
+        storageClassName: ""
 ---
