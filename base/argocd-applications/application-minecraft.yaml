@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: minecraft-dev
+  name: minecraft
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: minecraft-dev
+    namespace: minecraft
   source:
     repoURL: https://github.com/goegoe0212/kubernetes-api-argocd.git
     path: overlays/development/minecraft
