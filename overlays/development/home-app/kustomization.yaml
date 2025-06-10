@@ -5,7 +5,7 @@ resources:
 - ../../../base/home-app
 
 images:
-- name: docker.io/goegoe0212/fastapi-kubernetes
-  newTag: 0.2.0
+- name: goegoe0212/home-api
+  newTag: 0.1.0
 - name: goegoe0212/home-temp-collector
   newTag: 0.1.0
