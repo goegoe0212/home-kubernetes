@@ -7,4 +7,3 @@ resources:
 - ./postgresql
 - ./batjob
 - ./metabase
-- ./cloudflared
