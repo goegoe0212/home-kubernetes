@@ -3,7 +3,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: cloudflared-service
-  namespace: home-app
+  namespace: cloudflare
 spec:
   selector:
     app: cloudflared
@@ -16,7 +16,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cloudflared-config
-  namespace: home-app
+  namespace: cloudflare
 data:
   config.yaml: |
     ingress:
@@ -30,7 +30,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: cloudflared
-  namespace: home-app
+  namespace: cloudflare
 spec:
   replicas: 1
   selector:
