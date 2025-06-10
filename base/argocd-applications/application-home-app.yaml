@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
     namespace: home-app
   source:
-    repoURL: https://github.com/goegoe0212/kubernetes-api-argocd.git
+    repoURL: https://github.com/goegoe0212/home-kubernetes.git
     path: overlays/development/home-app
     targetRevision: HEAD
     kustomize: {}
