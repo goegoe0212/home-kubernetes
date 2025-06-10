@@ -4,11 +4,8 @@ kind: Service
 metadata:
   name: metabase-service
   namespace: home-app
-  annotations:
-    link.argocd.argoproj.io/external-link: http://192.168.20.103/
 spec:
-  type: LoadBalancer
-  loadBalancerIP: 192.168.20.103
+  type: ClusterIP
   ports:
     - port: 80
       targetPort: 3000
