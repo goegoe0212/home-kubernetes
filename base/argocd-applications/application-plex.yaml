@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: plex
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: plex
+  source:
+    repoURL: https://github.com/goegoe0212/home-kubernetes.git
+    path: overlays/development/plex
+    targetRevision: HEAD
+    kustomize: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

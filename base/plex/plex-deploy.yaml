@@ -1,0 +1,167 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: plex-service
+  namespace: plex
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 192.168.20.105
+  ports:
+    - name: plex-tcp-32400
+      port: 32400
+      targetPort: 32400
+      protocol: TCP
+    - name: plex-tcp-8324
+      port: 8324
+      targetPort: 8324
+      protocol: TCP
+    - name: plex-tcp-32469
+      port: 32469
+      targetPort: 32469
+      protocol: TCP
+    - name: plex-udp-1900
+      port: 1900
+      targetPort: 1900
+      protocol: UDP
+    - name: plex-udp-32410
+      port: 32410
+      targetPort: 32410
+      protocol: UDP
+    - name: plex-udp-32412
+      port: 32412
+      targetPort: 32412
+      protocol: UDP
+    - name: plex-udp-32413
+      port: 32413
+      targetPort: 32413
+      protocol: UDP
+    - name: plex-udp-32414
+      port: 32414
+      targetPort: 32414
+      protocol: UDP
+  selector:
+    app: plex-server
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: plex-media-pv
+spec:
+  capacity:
+    storage: 350Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.20.20
+    path: /home/cloudinit/data/plex/data
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: plex-config-pv
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.20.20
+    path: /home/cloudinit/data/plex/config
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-media-pvc
+  namespace: plex
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 350Gi
+  storageClassName: ""
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: plex-config-pvc
+  namespace: plex
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  storageClassName: ""
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plex-server
+  namespace: plex
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: plex-server
+  template:
+    metadata:
+      labels:
+        app: plex-server
+    spec:
+      containers:
+        - name: plex-server
+          image: plexinc/pms-docker
+          ports:
+            - containerPort: 32400
+              protocol: TCP
+            - containerPort: 8324
+              protocol: TCP
+            - containerPort: 32469
+              protocol: TCP
+            - containerPort: 1900
+              protocol: UDP
+            - containerPort: 32410
+              protocol: UDP
+            - containerPort: 32412
+              protocol: UDP
+            - containerPort: 32413
+              protocol: UDP
+            - containerPort: 32414
+              protocol: UDP
+          env:
+            - name: TZ
+              value: "Asia/Tokyo"
+            - name: PLEX_CLAIM
+              valueFrom:
+                secretKeyRef:
+                  name: plex-secrets
+                  key: claim
+            - name: ADVERTISE_IP
+              value: "http://192.168.20.105:32400/"
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "500m"
+            limits:
+              memory: "4Gi"
+              cpu: "2"
+          volumeMounts:
+            - name: media
+              mountPath: /data
+            - name: config
+              mountPath: /config
+      restartPolicy: Always
+      volumes:
+        - name: media
+          persistentVolumeClaim:
+            claimName: plex-media-pvc
+        - name: config
+          persistentVolumeClaim:
+            claimName: plex-config-pvc
+---
