@@ -141,7 +141,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: plex-secrets
-                  key: claim
+                  key: token
             - name: ADVERTISE_IP
               value: "http://192.168.20.105:32400/"
           resources:
