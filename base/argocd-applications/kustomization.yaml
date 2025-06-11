@@ -6,4 +6,5 @@ resources:
   - application-minecraft.yaml
   - application-cloudflare.yaml
   - application-plex.yaml
+  - application-samba.yaml
   - ../../secret
