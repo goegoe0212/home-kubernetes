@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: samba-nfs-pv
+  name: home-app-nfs-pv
 spec:
   capacity:
     storage: 50Gi
@@ -32,7 +32,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: samba-nfs-pvc
+  name: home-app-nfs-pvc
   namespace: home-app
 spec:
   accessModes:
@@ -86,5 +86,5 @@ spec:
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: samba-nfs-pvc
+            claimName: home-app-nfs-pvc
 ---
