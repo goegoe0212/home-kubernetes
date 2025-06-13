@@ -6,6 +6,6 @@ resources:
 
 images:
 - name: goegoe0212/home-api
-  newTag: 0.1.0
+  newTag: 0.1.1
 - name: goegoe0212/home-temp-collector
   newTag: 0.1.0
