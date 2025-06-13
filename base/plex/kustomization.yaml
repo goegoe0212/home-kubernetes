@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - plex-namespace.yaml
 - plex-deploy.yaml
+- samba-deploy.yaml
