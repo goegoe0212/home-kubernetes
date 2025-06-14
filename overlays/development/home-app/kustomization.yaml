@@ -9,3 +9,5 @@ images:
   newTag: 0.1.2
 - name: goegoe0212/home-temp-collector
   newTag: 0.1.1
+- name: goegoe0212/home-discord-bot
+  newTag: 0.1.0

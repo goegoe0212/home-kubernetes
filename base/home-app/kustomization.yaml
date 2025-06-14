@@ -6,5 +6,6 @@ resources:
 - ./api
 - ./postgresql
 - ./batjob
+- ./discord-bot
 - ./metabase
 - ./samba
