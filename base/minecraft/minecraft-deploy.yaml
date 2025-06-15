@@ -75,12 +75,20 @@ spec:
               value: "Asia/Tokyo"
             - name: MEMORY
               value: "8G"
+            - name: OVERRIDE_SERVER_PROPERTIES
+              value: "true"
             - name: SERVER_NAME
-              value: "minecraft server"
+              value: "SSMC Minecraft Server"
             - name: MOTD
-              value: "Welcome! minecraft server!!"
+              value: "§l§b✦ Welcome to §6SSMC Minecraft Server §b✦§r"
             - name: DIFFICULTY
               value: "hard"
+            - name: VIEW_DISTANCE
+              value: "6"
+            - name: NETWORK_COMPRESSION_THRESHOLD
+              value: "256"
+            - name: OPS
+              value: "goegoe0212"
           resources:
             requests:
               memory: "1Gi"
