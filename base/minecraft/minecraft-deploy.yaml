@@ -84,7 +84,7 @@ spec:
             - name: DIFFICULTY
               value: "hard"
             - name: VIEW_DISTANCE
-              value: "6"
+              value: "10"
             - name: NETWORK_COMPRESSION_THRESHOLD
               value: "256"
             - name: OPS
