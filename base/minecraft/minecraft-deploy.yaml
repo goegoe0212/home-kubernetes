@@ -71,6 +71,10 @@ spec:
               value: "PAPER"
             - name: VERSION
               value: "1.21.6"
+            - name: PAPER_CHANNEL
+              value: "experimental"
+            - name: PAPER_BUILD
+              value: "24"
             - name: TZ
               value: "Asia/Tokyo"
             - name: MEMORY
