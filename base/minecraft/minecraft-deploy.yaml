@@ -70,7 +70,7 @@ spec:
             - name: TYPE
               value: "PAPER"
             - name: VERSION
-              value: "1.21.4"
+              value: "1.21.6"
             - name: TZ
               value: "Asia/Tokyo"
             - name: MEMORY
