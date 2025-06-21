@@ -8,6 +8,6 @@ images:
 - name: goegoe0212/home-api
   newTag: 0.1.3
 - name: goegoe0212/home-temp-collector
-  newTag: 0.1.2
+  newTag: 0.1.3
 - name: goegoe0212/home-discord-bot
   newTag: 0.1.0
