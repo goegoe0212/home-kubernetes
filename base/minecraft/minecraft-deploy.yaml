@@ -70,7 +70,7 @@ spec:
             - name: TYPE
               value: "PAPER"
             - name: VERSION
-              value: "1.21.6"
+              value: "1.21.8"
             - name: PAPER_CHANNEL
               value: "experimental"
             - name: PAPER_BUILD
