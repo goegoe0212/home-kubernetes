@@ -5,5 +5,4 @@ resources:
   - application-home-app.yaml
   - application-minecraft.yaml
   - application-cloudflare.yaml
-  - application-plex.yaml
   - ../../secret
