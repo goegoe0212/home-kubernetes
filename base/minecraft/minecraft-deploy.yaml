@@ -14,42 +14,14 @@ spec:
   selector:
     app: minecraft-server
 ---
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: minecraft-nfs-pv
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: 192.168.20.20
-    path: /home/cloudinit/data/minecraft
-  persistentVolumeReclaimPolicy: Retain
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: minecraft-nfs-pvc
-  namespace: minecraft
-spec:
-  accessModes:
-    - ReadWriteMany
-  resources:
-    requests:
-      storage: 20Gi
-  storageClassName: ""
----
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet  
 metadata:
   name: minecraft-server
   namespace: minecraft
 spec:
+  serviceName: minecraft-server
   replicas: 1
-  strategy:
-    type: Recreate
   selector:
     matchLabels:
       app: minecraft-server
@@ -105,9 +77,13 @@ spec:
           volumeMounts:
             - name: minecraft-data
               mountPath: /data
-      restartPolicy: Always
-      volumes:
-        - name: minecraft-data
-          persistentVolumeClaim:
-            claimName: minecraft-nfs-pvc
+  volumeClaimTemplates:
+    - metadata:
+        name: minecraft-data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 20Gi
+        storageClassName: qnap-iscsi-standard
 ---
