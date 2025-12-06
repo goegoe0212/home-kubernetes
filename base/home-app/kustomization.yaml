@@ -7,4 +7,3 @@ resources:
 - ./batjob
 - ./discord-bot
 - ./metabase
-- ./samba
