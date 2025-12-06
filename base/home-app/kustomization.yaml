@@ -4,7 +4,6 @@ kind: Kustomization
 resources:
 - home-app-namespace.yaml
 - ./api
-- ./postgresql
 - ./batjob
 - ./discord-bot
 - ./metabase
