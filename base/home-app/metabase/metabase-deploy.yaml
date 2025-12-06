@@ -51,7 +51,7 @@ spec:
             - name: MB_DB_PASS
               value: "Passw0rd"
             - name: MB_DB_HOST
-              value: "postgres-service"
+              value: "postgres-service.postgresql.svc"
           resources:
             requests:
               cpu: "100m"
