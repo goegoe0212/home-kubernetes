@@ -46,7 +46,7 @@ metadata:
   name: fastapi-deployment
   namespace: home-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: fastapi-app
@@ -72,11 +72,11 @@ spec:
           value: "6379"
         resources:
           requests:
-            cpu: "100m"
-            memory: "128Mi"
+            cpu: "1000m"
+            memory: "1024Mi"
           limits:
-            cpu: "500m"
-            memory: "256Mi"
+            cpu: "2000m"
+            memory: "2048Mi"
         volumeMounts:
           - name: fastapi-data
             mountPath: /data
