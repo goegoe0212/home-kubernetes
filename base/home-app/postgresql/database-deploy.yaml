@@ -14,20 +14,6 @@ spec:
       targetPort: 5432
       protocol: TCP
 ---
-apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: postgres-nfs-pv
-spec:
-  capacity:
-    storage: 20Gi
-  accessModes:
-    - ReadWriteMany
-  nfs:
-    server: 192.168.20.20
-    path: /home/cloudinit/data/postgresql
-  persistentVolumeReclaimPolicy: Retain
----
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -66,9 +52,9 @@ spec:
     - metadata:
         name: postgres-data
       spec:
-        accessModes: [ "ReadWriteMany" ]
+        accessModes: ["ReadWriteOnce"]
         resources:
           requests:
             storage: 20Gi
-        storageClassName: ""
+        storageClassName: qnap-iscsi-standard
 ---

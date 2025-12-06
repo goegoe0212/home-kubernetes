@@ -8,4 +8,5 @@ parameters:
   selector: "performance=performance1"  # pool1 に対応
   fsType: "ext4"
 allowVolumeExpansion: true
+reclaimPolicy: Retain
 ---

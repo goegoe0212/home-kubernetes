@@ -13,7 +13,3 @@ spec:
     path: overlays/development/minecraft
     targetRevision: HEAD
     kustomize: {}
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
