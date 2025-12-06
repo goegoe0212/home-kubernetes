@@ -1,0 +1,21 @@
+---
+apiVersion: trident.qnap.io/v1
+kind: TridentBackendConfig
+metadata:
+  name: backend-qts
+  namespace: trident
+spec:
+  version: 1
+  storageDriverName: qnap-iscsi
+  backendName: hero
+  networkInterfaces: ["Adapter 3+4"]
+  credentials:
+    name: backend-qts-secret
+  debugTraceFlags:
+    method: true
+  storage:
+    - serviceLevel: pool1
+      labels:
+        performance: performance1
+      accessModes: ["ReadWriteOnce"]
+---
