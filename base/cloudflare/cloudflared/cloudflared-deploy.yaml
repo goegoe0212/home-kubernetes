@@ -20,10 +20,12 @@ metadata:
 data:
   config.yaml: |
     ingress:
-      - hostname: metabase.ssmcgames.com
+      - hostname: metabase.goegoe0212.com
         service: http://metabase-service.home-app
-      - hostname: argocd.ssmcgames.com
+      - hostname: argocd.goegoe0212.com
         service: http://argocd-server.argocd:8080
+      - hostname: immich.goegoe0212.com
+        service: http://immich-server-service.immich:2283
       - service: http_status:404
 ---
 apiVersion: apps/v1
