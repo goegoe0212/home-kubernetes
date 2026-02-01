@@ -13,3 +13,7 @@ spec:
     path: overlays/development/immich
     targetRevision: HEAD
     kustomize: {}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
