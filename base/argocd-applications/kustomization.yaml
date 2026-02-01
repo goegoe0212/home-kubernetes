@@ -6,4 +6,5 @@ resources:
   - application-postgresql.yaml
   - application-minecraft.yaml
   - application-cloudflare.yaml
+  - application-immich.yaml
   - ../../secret
