@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
   - application-home-app.yaml
+  - application-postgresql.yaml
   - application-minecraft.yaml
   - application-cloudflare.yaml
   - ../../secret
