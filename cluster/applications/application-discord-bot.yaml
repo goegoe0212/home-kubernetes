@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: discord-bot
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: discord-bot
+  source:
+    repoURL: https://github.com/goegoe0212/home-kubernetes.git
+    path: apps/discord-bot/overlays
+    targetRevision: HEAD
+    kustomize: {}
