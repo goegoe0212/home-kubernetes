@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: home-app
+  name: home-api
   namespace: argocd
 spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: home-app
+    namespace: home-api
   source:
     repoURL: https://github.com/goegoe0212/home-kubernetes.git
-    path: overlays/development/home-app
+    path: apps/home-api/overlays
     targetRevision: HEAD
     kustomize: {}
   syncPolicy:
