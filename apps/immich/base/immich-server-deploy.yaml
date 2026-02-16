@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: server
-          image: ghcr.io/immich-app/immich-server:release
+          image: ghcr.io/immich-app/immich-server
           ports:
             - containerPort: 2283
           env:

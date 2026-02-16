@@ -10,7 +10,7 @@ spec:
     namespace: immich
   source:
     repoURL: https://github.com/goegoe0212/home-kubernetes.git
-    path: overlays/development/immich
+    path: apps/immich/overlays
     targetRevision: HEAD
     kustomize: {}
   syncPolicy:
