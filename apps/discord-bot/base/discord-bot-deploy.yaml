@@ -19,9 +19,9 @@ spec:
           imagePullPolicy: Always
           envFrom:
           - configMapRef:
-            name: discord-bot-configmap
+              name: discord-bot-configmap
           - secretRef:
-            name: discord-bot-secret
+              name: discord-bot-secret
           resources:
             requests:
               cpu: "10m"
