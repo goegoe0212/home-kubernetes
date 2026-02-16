@@ -10,6 +10,6 @@ spec:
     namespace: minecraft
   source:
     repoURL: https://github.com/goegoe0212/home-kubernetes.git
-    path: overlays/development/minecraft
+    path: apps/minecraft/overlays
     targetRevision: HEAD
     kustomize: {}
