@@ -6,3 +6,4 @@ resources:
 - ./metallb
 - ./nginx-ingress
 - ./qnap
+- ./sealed-secrets
