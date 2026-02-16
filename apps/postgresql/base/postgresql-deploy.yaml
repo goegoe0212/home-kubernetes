@@ -32,7 +32,7 @@ spec:
     spec:
       containers:
         - name: postgres-app
-          image: timescale/timescaledb:latest-pg17
+          image: timescale/timescaledb
           ports:
             - containerPort: 5432
           env:
