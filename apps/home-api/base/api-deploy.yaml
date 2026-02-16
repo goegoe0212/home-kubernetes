@@ -35,9 +35,9 @@ spec:
         env:
         - name: PREFIX_URL
           value: "/dev"
-          envFrom:
-          - configMapRef:
-              name: api-configmap
+        envFrom:
+        - configMapRef:
+            name: api-configmap
         resources:
           requests:
             cpu: "1000m"
