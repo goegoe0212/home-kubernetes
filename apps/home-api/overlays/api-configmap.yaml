@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: api-configmap
+data:
+  TZ: "Asia/Tokyo"
+  REDIS_HOST: redis-service.redis
+  REDIS_PORT: "6379"
+  REDIS_MAX_CONNECTIONS: "10"
+---

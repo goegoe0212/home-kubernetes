@@ -33,14 +33,11 @@ spec:
         ports:
         - containerPort: 8000
         env:
-        - name: TZ
-          value: "Asia/Tokyo"
         - name: PREFIX_URL
           value: "/dev"
-        - name: REDIS_HOST
-          value: "redis-service"
-        - name: REDIS_PORT
-          value: "6379"
+          envFrom:
+          - configMapRef:
+              name: api-configmap
         resources:
           requests:
             cpu: "1000m"

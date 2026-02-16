@@ -5,6 +5,7 @@ namespace: home-api
 
 resources:
 - namespace.yaml
+- api-configmap.yaml
 - ../base
 
 images:
