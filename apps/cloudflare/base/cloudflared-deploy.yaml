@@ -19,7 +19,7 @@ data:
   config.yaml: |
     ingress:
       - hostname: metabase.goegoe0212.com
-        service: http://metabase-service.home-app
+        service: http://metabase-service.metabase
       - hostname: argocd.goegoe0212.com
         service: http://argocd-server.argocd:8080
       - hostname: immich.goegoe0212.com
