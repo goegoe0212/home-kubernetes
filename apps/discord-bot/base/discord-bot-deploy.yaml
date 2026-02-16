@@ -17,23 +17,11 @@ spec:
         - name: discord-bot-container
           image: goegoe0212/home-discord-bot
           imagePullPolicy: Always
-          env:
-            - name: TZ
-              value: "Asia/Tokyo"
-            - name: REDIS_HOST
-              value: "redis-service"
-            - name: REDIS_PORT
-              value: "6379"
-            - name: DISCORD_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: discord-bot-secret
-                  key: DISCORD_TOKEN
-            - name: DISCORD_CHANNEL_ID
-              valueFrom:
-                secretKeyRef:
-                  name: discord-bot-secret
-                  key: DISCORD_CHANNEL_ID
+          envFrom:
+          - configMapRef:
+            name: discord-bot-configmap
+          - secretRef:
+            name: discord-bot-secret
           resources:
             requests:
               cpu: "10m"

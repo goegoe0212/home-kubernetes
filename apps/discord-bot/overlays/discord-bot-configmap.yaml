@@ -2,9 +2,10 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: discord-bot-config
+  name: discord-bot-configmap
 data:
-  redis_host: redis-service.redis
-  redis_port: "6379"
-  redis_max_connections: "10"
+  TZ: "Asia/Tokyo"
+  REDIS_HOST: redis-service.redis
+  REDIS_PORT: "6379"
+  REDIS_MAX_CONNECTIONS: "10"
 ---
