@@ -5,6 +5,7 @@ namespace: discord-bot
 
 resources:
 - namespace.yaml
+- discord-bot-configmap.yaml
 - sealedsecret.yaml
 - ../base
 
