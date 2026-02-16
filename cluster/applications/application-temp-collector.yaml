@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: temp-collector
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: temp-collector
+  source:
+    repoURL: https://github.com/goegoe0212/home-kubernetes.git
+    path: apps/temp-collector/overlays
+    targetRevision: HEAD
+    kustomize: {}

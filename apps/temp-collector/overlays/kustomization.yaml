@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: temp-collector
+
+resources:
+- namespace.yaml
+- ../base
+
+images:
+- name: goegoe0212/home-temp-collector
+  newTag: 0.1.3
