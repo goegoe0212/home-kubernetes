@@ -10,7 +10,7 @@ spec:
     namespace: cloudflare
   source:
     repoURL: https://github.com/goegoe0212/home-kubernetes.git
-    path: overlays/development/cloudflare
+    path: apps/cloudflare/overlays
     targetRevision: HEAD
     kustomize: {}
   syncPolicy:
