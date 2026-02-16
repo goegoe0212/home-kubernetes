@@ -5,6 +5,7 @@ namespace: temp-collector
 
 resources:
 - namespace.yaml
+- sealedsecret.yaml
 - ../base
 
 images:
