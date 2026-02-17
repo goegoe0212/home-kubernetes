@@ -12,6 +12,33 @@ spec:
     targetPort: 8000
   type: ClusterIP
 ---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: fastapi-nfs-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: 192.168.10.20
+    path: /youtube/temporary
+  persistentVolumeReclaimPolicy: Retain
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fastapi-nfs-pvc
+  namespace: home-app
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: ""
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -45,5 +72,12 @@ spec:
           limits:
             cpu: "2000m"
             memory: "2048Mi"
+        volumeMounts:
+          - name: fastapi-data
+            mountPath: /data
       restartPolicy: Always
+      volumes:
+        - name: fastapi-data
+          persistentVolumeClaim:
+            claimName: fastapi-nfs-pvc
 ---
