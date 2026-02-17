@@ -31,6 +31,8 @@ spec:
       containers:
         - name: machine-learning
           image: ghcr.io/immich-app/immich-machine-learning:release
+          ports:
+            - containerPort: 3003
           env:
             - name: TZ
               value: "Asia/Tokyo"
