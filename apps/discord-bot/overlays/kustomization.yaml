@@ -11,4 +11,4 @@ resources:
 
 images:
 - name: goegoe0212/home-discord-bot
-  newTag: 0.1.0
+  newTag: 0.1.1
