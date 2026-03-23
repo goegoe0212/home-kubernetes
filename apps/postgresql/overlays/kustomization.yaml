@@ -9,4 +9,4 @@ resources:
 
 images:
   - name: timescale/timescaledb
-    newTag: latest-pg17
+    newTag: 2.24.0-pg17
