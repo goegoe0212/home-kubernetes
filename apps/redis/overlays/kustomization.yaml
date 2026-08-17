@@ -9,4 +9,4 @@ resources:
 
 images:
   - name: redis
-    newTag: alpine
+    newTag: 8.10.0-alpine

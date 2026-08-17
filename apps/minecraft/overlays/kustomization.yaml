@@ -9,4 +9,4 @@ resources:
 
 images:
   - name: itzg/minecraft-server
-    newTag: latest
+    newTag: 2026.8.0
