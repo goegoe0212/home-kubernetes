@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: machine-learning
-          image: ghcr.io/immich-app/immich-machine-learning:release
+          image: ghcr.io/immich-app/immich-machine-learning
           ports:
             - containerPort: 3003
           env:
